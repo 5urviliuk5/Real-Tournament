@@ -24,7 +24,8 @@ public class Rocket : MonoBehaviour
         {
             health.Damage(10);
         }
-        Destroy(gameObject);
+        // Destroy(gameObject);
+        transform.forward = other.contacts[0].normal;
         Instantiate(explosionParticles, transform.position, transform.rotation);
     }
 }
