@@ -222,6 +222,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 2431118498514713968, guid: 4c8e66670d4d16d48bc5a1be392ec3e0,
     type: 3}
+  maxAmmo: 10000
+  ammo: 10000
+  isReloading: 0
+  isAutomatic: 1
+  fireInterval: 0.1
+  fireCooldown: 0
+  reloadTime: 2
 --- !u!1001 &323338280
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -827,8 +834,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b01533e17c758254cb4b86dc5e3edde4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 0
-  maxHp: 0
+  hp: 100
+  maxHp: 100
 --- !u!1 &1732989105
 GameObject:
   m_ObjectHideFlags: 0
