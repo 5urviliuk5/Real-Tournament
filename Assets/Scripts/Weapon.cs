@@ -10,7 +10,7 @@ public class Weapon : MonoBehaviour
     public bool isReloading;
     public bool isAutomatic;
     public float fireInterval = 0.1f;
-    public float fireCooldown;
+    private float fireCooldown;
     public float reloadTime = 2;
 
     void Update()

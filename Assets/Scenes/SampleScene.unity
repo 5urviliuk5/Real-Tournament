@@ -293,9 +293,8 @@ MonoBehaviour:
   maxAmmo: 10000
   ammo: 10000
   isReloading: 0
-  isAutomatic: 0
-  fireInterval: 0.1
-  fireCooldown: 0
+  isAutomatic: 1
+  fireInterval: 0.5
   reloadTime: 2
 --- !u!1001 &323338280
 PrefabInstance:
