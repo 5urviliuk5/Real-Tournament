@@ -10,6 +10,7 @@ public class Weapon : MonoBehaviour
     public int ammo;
     public bool isReloading;
     public bool isAutomatic;
+    public bool isShotgun;
     public float fireInterval = 0.1f;
     private float fireCooldown;
     public float reloadTime = 2;
@@ -62,8 +63,23 @@ public class Weapon : MonoBehaviour
         }
         if (fireCooldown > 0) return;
 
-        ammo--;
+        if (isShotgun)
+        {
+            ammo -= 2;
+
+            Vector3 bulletPosition = transform.position;
+            Instantiate(bulletPrefab, bulletPosition, transform.rotation);
+
+            bulletPosition.x += 0.3f;
+            Instantiate(bulletPrefab, bulletPosition, transform.rotation);
+        }
+        else
+        {
+            ammo--;
+            Instantiate(bulletPrefab, transform.position, transform.rotation);
+        }
+
         fireCooldown = fireInterval;
-        Instantiate(bulletPrefab, transform.position, transform.rotation);
+        
     }
 }
