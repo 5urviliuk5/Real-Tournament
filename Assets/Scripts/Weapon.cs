@@ -1,19 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Weapon : MonoBehaviour
 {
     public GameObject bulletPrefab;
-    public int maxAmmo;
-    public int standartAmmoInClip;
+
     public int ammo;
+    public int maxAmmo = 10;
+    public int clipAmmo;
+    public int clipSize;
+
     public bool isReloading;
     public bool isAutomatic;
-    public bool isShotgun;
-    public float fireInterval = 0.1f;
-    private float fireCooldown;
-    public float reloadTime = 2;
+    public float fireInterval = 0.5f;
+    public float fireCooldown;
+    public float spreadAngle = 5;
+    public int bulletsPerShot = 1;
+
+    //public UnityEvent onRightClick;
+    //public UnityEvent onReload;
+    //public UnityEvent onShoot;
 
     void Update()
     {
@@ -21,65 +27,61 @@ public class Weapon : MonoBehaviour
         {
             Shoot();
         }
+
         if (isAutomatic && Input.GetKey(KeyCode.Mouse0))
         {
             Shoot();
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R) && ammo < maxAmmo)
         {
             Reload();
         }
+
+        //if (Input.GetKeyDown(KeyCode.Mouse1))
+        //{
+        //    onRightClick.Invoke();
+        //}
+
         fireCooldown -= Time.deltaTime;
     }
 
-    async void Reload()
-    {
-        if (ammo == maxAmmo) return;
-        if (isReloading) return;
-
-        isReloading = true;
-
-        print("Reloading...");
-        await new WaitForSeconds(reloadTime);
-        print("Reloaded!");
-
-        isReloading = false;
-        ammo = standartAmmoInClip;
-        maxAmmo -= standartAmmoInClip;
-        if (maxAmmo <= 0 && ammo == 0)
-        {
-            ammo = 0;
-        }
-    }
-
-    void Shoot()
+    public void Shoot()
     {
         if (isReloading) return;
-        if (ammo <= 0)
+        if (clipAmmo <= 0)
         {
             Reload();
             return;
         }
         if (fireCooldown > 0) return;
 
-        if (isShotgun)
-        {
-            ammo -= 2;
-
-            Vector3 bulletPosition = transform.position;
-            Instantiate(bulletPrefab, bulletPosition, transform.rotation);
-
-            bulletPosition.x += 0.3f;
-            Instantiate(bulletPrefab, bulletPosition, transform.rotation);
-        }
-        else
-        {
-            ammo--;
-            Instantiate(bulletPrefab, transform.position, transform.rotation);
-        }
-
+        //onShoot.Invoke();
+        clipAmmo--;
         fireCooldown = fireInterval;
-        
+
+        for (int i = 0; i < bulletsPerShot; i++)
+        {
+            var bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
+            var offsetX = Random.Range(-spreadAngle, spreadAngle);
+            var offsetY = Random.Range(-spreadAngle, spreadAngle);
+            bullet.transform.eulerAngles += new Vector3(offsetX, offsetY, 0);
+        }
+    }
+
+    async void Reload()
+    {
+        if (clipAmmo == clipSize) return;
+        if (isReloading) return;
+        isReloading = true;
+
+        //onReload.Invoke();
+        await new WaitForSeconds(2f);
+
+        var ammoNeaded = Mathf.Min(clipSize - clipAmmo, ammo);
+        ammo -= ammoNeaded;
+        clipAmmo += ammoNeaded;
+
+        isReloading = false;
     }
 }
