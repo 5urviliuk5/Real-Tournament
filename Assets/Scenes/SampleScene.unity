@@ -203,6 +203,7 @@ GameObject:
   - component: {fileID: 41628252}
   - component: {fileID: 41628251}
   - component: {fileID: 41628253}
+  - component: {fileID: 41628254}
   m_Layer: 6
   m_Name: Gun
   m_TagString: Untagged
@@ -290,12 +291,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 2431118498514713968, guid: 4c8e66670d4d16d48bc5a1be392ec3e0,
     type: 3}
-  maxAmmo: 10000
-  ammo: 10000
+  ammo: 1000
+  maxAmmo: 1000
+  clipAmmo: 70
+  clipSize: 100
   isReloading: 0
   isAutomatic: 1
   fireInterval: 0.3
-  reloadTime: 2
+  fireCooldown: 0
+  spreadAngle: 0
+  bulletsPerShot: 1
+  onRightClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 41628254}
+        m_TargetAssemblyTypeName: BurstMod, Assembly-CSharp
+        m_MethodName: Burst
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &41628254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 41628248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdf8b700a2d7cf847a2f4ab6343da595, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon: {fileID: 41628253}
+  isBursting: 0
 --- !u!1001 &323338280
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -693,7 +727,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.46, y: 2.46, z: 2.46}
+  m_LocalScale: {x: 6, y: 6, z: 6}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
