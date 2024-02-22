@@ -5,7 +5,8 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     public GameObject bulletPrefab;
-    public int maxAmmo = 10;
+    public int maxAmmo;
+    public int standartAmmoInClip;
     public int ammo;
     public bool isReloading;
     public bool isAutomatic;
@@ -43,7 +44,12 @@ public class Weapon : MonoBehaviour
         print("Reloaded!");
 
         isReloading = false;
-        ammo = maxAmmo;
+        ammo = standartAmmoInClip;
+        maxAmmo -= standartAmmoInClip;
+        if (maxAmmo <= 0 && ammo == 0)
+        {
+            ammo = 0;
+        }
     }
 
     void Shoot()
