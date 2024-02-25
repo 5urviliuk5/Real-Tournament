@@ -5,11 +5,20 @@ using UnityEngine;
 public class Rocket : MonoBehaviour
 {
     public float speed = 20f;
+    public GameObject shellPrefab;
+    public Weapon weapon;
     public GameObject explosionParticles;
 
-    private void Start()
+    void Start()
     {
         Destroy(gameObject, 3f);
+        weapon.onShoot.AddListener(InstantiateShell);
+    }
+
+    public void InstantiateShell()
+    {
+
+        Instantiate(weapon.bulletPrefab, transform.position, transform.rotation);
     }
 
     void Update()

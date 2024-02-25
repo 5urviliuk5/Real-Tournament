@@ -653,6 +653,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1476858671}
+    - targetCorrespondingSourceObject: {fileID: 1773623360729482, guid: 11aaea5348574644a9eb4f4504fcce3f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1476858672}
     - targetCorrespondingSourceObject: {fileID: 1593727746557118, guid: 11aaea5348574644a9eb4f4504fcce3f,
         type: 3}
       insertIndex: -1
@@ -1104,7 +1108,7 @@ GameObject:
   - component: {fileID: 1159099244}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1211,12 +1215,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 100
   maxHp: 100
+  shouldDestroy: 1
   onDie:
     m_PersistentCalls:
       m_Calls: []
   onDamage:
     m_PersistentCalls:
       m_Calls: []
+  deathEffect: {fileID: 3607815329610981011, guid: c45c4a9087733084a8fc8f7943254ca1,
+    type: 3}
+  damageEffect: {fileID: 8404792189565776531, guid: 12d288e49e6e3bd42b0102771b1a8ac1,
+    type: 3}
 --- !u!1 &1202795109
 GameObject:
   m_ObjectHideFlags: 0
@@ -1371,12 +1380,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 0
   maxHp: 100
+  shouldDestroy: 0
   onDie:
     m_PersistentCalls:
       m_Calls: []
   onDamage:
     m_PersistentCalls:
       m_Calls: []
+  deathEffect: {fileID: 0}
+  damageEffect: {fileID: 0}
+--- !u!114 &1476858672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1476858664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b13295e28ee4344a9199f5bf5bbe693, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon: {fileID: 41628253}
+  health: {fileID: 1476858671}
 --- !u!1 &1705895346
 GameObject:
   m_ObjectHideFlags: 0
