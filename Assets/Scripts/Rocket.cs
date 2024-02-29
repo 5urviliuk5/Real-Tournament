@@ -12,7 +12,6 @@ public class Rocket : MonoBehaviour
     void Start()
     {
         Destroy(gameObject, 3f);
-        weapon.onShoot.AddListener(InstantiateShell);
     }
 
     public void InstantiateShell()

@@ -23,4 +23,14 @@ public class HUD : MonoBehaviour
         ammoText.text = weapon.clipAmmo + " / " + weapon.ammo;
         healthText.text = health.hp.ToString();
     }
+
+    public void SubscribeWeapon()
+    {
+        
+    }
+
+    public void UnsubscribeWeapon()
+    {
+
+    }
 }

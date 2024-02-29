@@ -23,26 +23,6 @@ public class Weapon : MonoBehaviour
 
     void Update()
     {
-        if (!isAutomatic && Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            Shoot();
-        }
-
-        if (isAutomatic && Input.GetKey(KeyCode.Mouse0))
-        {
-            Shoot();
-        }
-
-        if (Input.GetKeyDown(KeyCode.R) && ammo < maxAmmo)
-        {
-            Reload();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Mouse1))
-        {
-            onRightClick.Invoke();
-        }
-
         fireCooldown -= Time.deltaTime;
     }
 
@@ -68,7 +48,7 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    async void Reload()
+    public async void Reload()
     {
         if (clipAmmo == clipSize) return;
         if (isReloading) return;

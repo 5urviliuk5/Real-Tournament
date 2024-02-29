@@ -43,7 +43,7 @@ public class PlayerDamage : MonoBehaviour
 
     void UpdateCamera()
     {
-        if ((float)health.health / health.maxHealth <= lowHpLimit)
+        if ((float)health.hp / health.maxHp <= lowHpLimit)
         {
             /*if (globalVolume.TryGet<Vignette>(out Vignette vig))
             {
@@ -51,11 +51,11 @@ public class PlayerDamage : MonoBehaviour
                 vig.intensity.value = lowHpLimit - (float)health.health / health.maxHealth;
             }*/
             vig.active = true;
-            vig.intensity.value = (lowHpLimit - (float)health.health / health.maxHealth) / lowHpLimit * maxVignetteValue;
+            vig.intensity.value = (lowHpLimit - (float)health.hp / health.maxHp) / lowHpLimit * maxVignetteValue;
             chr.active = true;
-            chr.intensity.value = (lowHpLimit - (float)health.health / health.maxHealth) / lowHpLimit * maxAberrationValue;
+            chr.intensity.value = (lowHpLimit - (float)health.hp / health.maxHp) / lowHpLimit * maxAberrationValue;
             lgg.active = true;
-            lgg.gain.Override(new Vector4(1f, 1f, 1f, - ((lowHpLimit - (float)health.health / health.maxHealth) / lowHpLimit * (1f - maxGainValue))));
+            lgg.gain.Override(new Vector4(1f, 1f, 1f, - ((lowHpLimit - (float)health.hp / health.maxHp) / lowHpLimit * (1f - maxGainValue))));
         } 
     }
 
