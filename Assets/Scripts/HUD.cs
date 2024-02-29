@@ -26,11 +26,11 @@ public class HUD : MonoBehaviour
 
     public void SubscribeWeapon()
     {
-        
+        weapon.onShoot.AddListener(UpdateUI);
     }
 
     public void UnsubscribeWeapon()
     {
-
+        weapon.onShoot.RemoveListener(UpdateUI);
     }
 }
