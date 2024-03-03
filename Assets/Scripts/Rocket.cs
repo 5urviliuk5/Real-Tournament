@@ -9,6 +9,7 @@ public class Rocket : MonoBehaviour
     public Weapon weapon;
     public GameObject explosionParticles;
     public AudioClip damageSound;
+    public AudioClip deathSound;
 
     void Start()
     {
@@ -36,6 +37,7 @@ public class Rocket : MonoBehaviour
         }
         // Destroy(gameObject);
         transform.forward = other.contacts[0].normal;
+        AudioSystem.Play(deathSound);
         Instantiate(explosionParticles, transform.position, transform.rotation);
     }
 }

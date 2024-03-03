@@ -135,6 +135,7 @@ MonoBehaviour:
     type: 3}
   damageEffect: {fileID: 8404792189565776531, guid: 12d288e49e6e3bd42b0102771b1a8ac1,
     type: 3}
+  deathSound: {fileID: 8300000, guid: c70f2da3caaaab648887fcaef4ba3e6a, type: 3}
 --- !u!114 &6145765871522062485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,7 +148,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3bf45f88d0221842a7a82ef5a7d5797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
 --- !u!195 &5280921737864195100
 NavMeshAgent:
   m_ObjectHideFlags: 0

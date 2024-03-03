@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028355, g: 0.22571374, b: 0.30692255, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -230,8 +230,8 @@ MonoBehaviour:
     type: 3}
   ammo: 90
   maxAmmo: 90
-  clipAmmo: 30
-  clipSize: 30
+  clipAmmo: 2
+  clipSize: 2
   isReloading: 0
   isAutomatic: 1
   fireInterval: 0.1
@@ -1627,7 +1627,7 @@ MonoBehaviour:
   enemiesPerWave: 02000000040000000600000008000000
   spawnInterval: 0.44
   timeBetweenWaves: 5
-  enemiesToSpawn: 30
+  enemiesToSpawn: 1
   onWaveStart:
     m_PersistentCalls:
       m_Calls: []
@@ -1930,6 +1930,10 @@ MonoBehaviour:
   dropSound: {fileID: 8300000, guid: 331931254d7994b44b99ae6c0b2936cb, type: 3}
   pickupSound: {fileID: 8300000, guid: b33149f3792cc714c9eb491fec365e29, type: 3}
   damageSound: {fileID: 8300000, guid: a1de0609bc73eb64eb51c219ec164423, type: 3}
+  shotgunShootSound: {fileID: 8300000, guid: ecdf22a32bddaa04e935897600875253, type: 3}
+  rifleShootSound: {fileID: 8300000, guid: 55469584c8331e34db49c8078f10b890, type: 3}
+  shotgunReloadSound: {fileID: 8300000, guid: b37737f9becba534694733781a41a334, type: 3}
+  rifleReloadSound: {fileID: 8300000, guid: 00657d40597328d449e8efc8d73c9563, type: 3}
 --- !u!114 &1476858679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2216,7 +2220,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 82cdfef4c5ce6bd42a196d2cce5dcc77, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.056
+  m_Volume: 0.005
   m_Pitch: 1
   Loop: 0
   Mute: 0

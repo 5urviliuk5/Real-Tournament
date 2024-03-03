@@ -15,7 +15,10 @@ public class Player : MonoBehaviour
     public AudioClip dropSound;
     public AudioClip pickupSound;
     public AudioClip damageSound;
-
+    public AudioClip shotgunShootSound;
+    public AudioClip rifleShootSound;
+    public AudioClip shotgunReloadSound;
+    public AudioClip rifleReloadSound;
 
     void Update()
     {
@@ -44,11 +47,29 @@ public class Player : MonoBehaviour
 
         if (weapon.isAutomatic && Input.GetKey(KeyCode.Mouse0))
         {
+            if (weapon.bulletsPerShot > 1)
+            {
+                AudioSystem.Play(shotgunShootSound);
+            }
+            else
+            {
+                AudioSystem.Play(rifleShootSound);
+            }
+
             weapon.Shoot();
         }
 
         if (Input.GetKeyDown(KeyCode.R) && weapon.ammo < weapon.maxAmmo)
         {
+            if (weapon.bulletsPerShot > 1)
+            {
+                AudioSystem.Play(shotgunReloadSound);
+            }
+            else
+            {
+                AudioSystem.Play(rifleReloadSound);
+            }
+
             weapon.Reload();
         }
 
@@ -56,6 +77,8 @@ public class Player : MonoBehaviour
         {
             weapon.onRightClick.Invoke();
         }
+
+        
 
         void Grab(GameObject gun)
         {
