@@ -1611,7 +1611,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 3664015777060170226, guid: e6eee972c4e6458439a3f444c6d71f2a, type: 3}
-  spawnPoints: []
+  spawnPoints:
+  - {fileID: 259871996}
+  - {fileID: 866895127}
+  enemiesPerWave: 0a0000001e0000002800000032000000
+  spawnInterval: 0.44
+  timeBetweenWaves: 5
+  enemiesToSpawn: 30
 --- !u!1 &1400356827
 GameObject:
   m_ObjectHideFlags: 0
