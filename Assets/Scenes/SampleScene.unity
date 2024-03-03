@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028355, g: 0.22571374, b: 0.30692255, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -684,6 +684,7 @@ MonoBehaviour:
   healthText: {fileID: 1705895348}
   weapon: {fileID: 41628253}
   health: {fileID: 1476858671}
+  player: {fileID: 1476858672}
 --- !u!1001 &323338280
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1924,6 +1925,9 @@ MonoBehaviour:
     m_Bits: 8
   grabText: {fileID: 261572359}
   hand: {fileID: 1097067482}
+  onChange:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1476858679
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class Player : MonoBehaviour
     public LayerMask weaponLayer;
     public GameObject grabText;
     public Transform hand;
+    public UnityEvent<Weapon> onChange = new UnityEvent<Weapon>();
 
     void Update()
     {
@@ -59,6 +61,7 @@ public class Player : MonoBehaviour
             weapon.transform.position = hand.position;
             weapon.transform.rotation = hand.rotation;
             weapon.transform.parent = hand;
+            onChange.Invoke(weapon);
         }
 
         void Drop()
@@ -68,6 +71,7 @@ public class Player : MonoBehaviour
             weapon.GetComponent<Rigidbody>().isKinematic = false;
             weapon.transform.parent = null;
             weapon = null;
+            onChange.Invoke(null);
         }
     }
 
