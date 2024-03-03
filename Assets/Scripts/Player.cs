@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     public LayerMask weaponLayer;
     public GameObject grabText;
     public Transform hand;
-    public UnityEvent<Weapon> onChange = new UnityEvent<Weapon>();
+    public HUD hud;
 
     void Update()
     {
@@ -61,7 +61,11 @@ public class Player : MonoBehaviour
             weapon.transform.position = hand.position;
             weapon.transform.rotation = hand.rotation;
             weapon.transform.parent = hand;
-            onChange.Invoke(weapon);
+
+            hud.UpdateUI();
+            hud.weapon = weapon;
+            weapon.onShoot.AddListener(hud.UpdateUI);
+            weapon.onReload.AddListener(hud.UpdateUI);
         }
 
         void Drop()
@@ -70,8 +74,12 @@ public class Player : MonoBehaviour
 
             weapon.GetComponent<Rigidbody>().isKinematic = false;
             weapon.transform.parent = null;
+            
+            hud.weapon = null;
+            weapon.onShoot.RemoveListener(hud.UpdateUI);
+            weapon.onReload.RemoveListener(hud.UpdateUI);
+
             weapon = null;
-            onChange.Invoke(null);
         }
     }
 
