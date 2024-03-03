@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Spawner : MonoBehaviour
 {
@@ -14,11 +15,16 @@ public class Spawner : MonoBehaviour
     public float timeBetweenWaves = 5f;
     public int enemiesToSpawn;
 
+    public UnityEvent onWaveStart;
+    public UnityEvent onWaveEnd;
+    public UnityEvent onWavesCleared;
+
     async void Start()
     {
         foreach (var num in enemiesPerWave)
         {
             enemiesToSpawn = num;
+            onWaveStart.Invoke();
 
             while (enemiesToSpawn > 0)
             {
@@ -27,8 +33,11 @@ public class Spawner : MonoBehaviour
                 enemiesToSpawn--;
             }
 
+            onWaveEnd.Invoke();
             await new WaitForSeconds(timeBetweenWaves);
         }
+
+        onWavesCleared.Invoke();
     }
 
     void Spawn()
