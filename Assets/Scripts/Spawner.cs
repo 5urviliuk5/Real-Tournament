@@ -18,9 +18,11 @@ public class Spawner : MonoBehaviour
     public UnityEvent onWaveStart;
     public UnityEvent onWaveEnd;
     public UnityEvent onWavesCleared;
+    public AudioClip zombieSound;
 
     async void Start()
     {
+        AudioSystem.Play(zombieSound);
         foreach (var num in enemiesPerWave)
         {
             enemiesToSpawn = num;

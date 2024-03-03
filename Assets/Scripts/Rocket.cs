@@ -8,6 +8,7 @@ public class Rocket : MonoBehaviour
     public GameObject shellPrefab;
     public Weapon weapon;
     public GameObject explosionParticles;
+    public AudioClip damageSound;
 
     void Start()
     {
@@ -27,6 +28,7 @@ public class Rocket : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
+        AudioSystem.Play(damageSound);
         var health = other.gameObject.GetComponent<Health>();
         if (health != null)
         {

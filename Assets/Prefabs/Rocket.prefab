@@ -160,6 +160,7 @@ MonoBehaviour:
   weapon: {fileID: 0}
   explosionParticles: {fileID: 3995940964130297852, guid: 8dd1cdf931288394ab85b0512657d919,
     type: 3}
+  damageSound: {fileID: 8300000, guid: a1de0609bc73eb64eb51c219ec164423, type: 3}
 --- !u!54 &1453830945676424847
 Rigidbody:
   m_ObjectHideFlags: 0

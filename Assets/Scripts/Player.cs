@@ -12,6 +12,11 @@ public class Player : MonoBehaviour
     public Transform hand;
     public HUD hud;
 
+    public AudioClip dropSound;
+    public AudioClip pickupSound;
+    public AudioClip damageSound;
+
+
     void Update()
     {
         var cam = Camera.main.transform;
@@ -54,6 +59,7 @@ public class Player : MonoBehaviour
 
         void Grab(GameObject gun)
         {
+            AudioSystem.Play(pickupSound);
             if (weapon == null) Drop();
 
             weapon = gun.GetComponent<Weapon>();
@@ -70,6 +76,7 @@ public class Player : MonoBehaviour
 
         void Drop()
         {
+            AudioSystem.Play(dropSound);
             if (weapon == null) return;
 
             weapon.GetComponent<Rigidbody>().isKinematic = false;
@@ -87,6 +94,7 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
+            AudioSystem.Play(damageSound);
             health.Damage(20);
         }
     }

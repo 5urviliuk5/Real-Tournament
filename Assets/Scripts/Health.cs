@@ -13,6 +13,8 @@ public class Health : MonoBehaviour
     public GameObject deathEffect;
     public GameObject damageEffect;
 
+    public AudioClip deathSound;
+
     void Start()
     {
         if (hp == 0)
@@ -36,6 +38,7 @@ public class Health : MonoBehaviour
 
     public void Die()
     {
+        AudioSystem.Play(deathSound);
         if(shouldDestroy)Destroy(gameObject);
         onDie.Invoke();
         if (deathEffect != null) Instantiate(deathEffect, transform.position, Quaternion.identity);
